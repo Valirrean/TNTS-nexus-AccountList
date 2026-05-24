@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNTS NEXUS - Portal Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="logo.png" alt="Logo" class="header-logo">
+            <div class="header-title">
+                <h1>TNTS NEXUS</h1>
+                <p>SHS Admin Portal</p>
+            </div>
+        </div>
+        <div class="icon-profile">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+        </div>
+    </header>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <ul class="sidebar-list" style="padding: 0 20px; margin-bottom: 10px;">
+                <li onclick="handleSidebarClick(this, 'blank')">
+                    <div class="sidebar-icon-svg">
+                        <svg viewBox="0 0 24 24" fill="black">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                        </svg>
+                    </div>
+                    <span>Home</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Core Features</div>
+                <ul class="sidebar-list">
+                    <li onclick="handleSidebarClick(this, 'blank')">
+                        <div class="sidebar-icon-svg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="8.5" cy="7" r="4" />
+                                <line x1="20" y1="8" x2="20" y2="14" />
+                                <line x1="17" y1="11" x2="23" y2="11" />
+                            </svg>
+                        </div>
+                        <span>Account Registration</span>
+                    </li>
+                    <li class="active" onclick="handleSidebarClick(this, 'selection')" id="nav-account-list">
+                        <div class="sidebar-icon-svg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <span>Account List</span>
+                    </li>
+                    <li onclick="handleSidebarClick(this, 'blank')">
+                        <div class="sidebar-icon-svg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                                <rect x="1" y="3" width="22" height="5"></rect>
+                                <line x1="10" y1="12" x2="14" y2="12"></line>
+                            </svg>
+                        </div>
+                        <span>Archived Accounts</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Others</div>
+                <ul class="sidebar-list">
+                    <li onclick="handleSidebarClick(this, 'blank')">
+                        <div class="sidebar-icon-svg">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2a10 10 0 0 1 0 20V2z" fill="black"/>
+                            </svg>
+                        </div>
+                        <span>Dark Mode</span>
+                    </li>
+                    <li onclick="handleSidebarClick(this, 'blank')">
+                        <div class="sidebar-icon-svg">
+                            <svg viewBox="0 0 24 24" fill="black">
+                                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                            </svg>
+                        </div>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            
+            <div id="main-page-header" class="page-header">
+                <div class="page-title-row">
+                    <svg class="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <h2>Account List</h2>
+                </div>
+                <div class="page-subtitle">View, Search, and edit existing user details.</div>
+            </div>
+
+            <div id="view-blank" class="view hidden blank-view"></div>
+
+            <div id="view-selection" class="view">
+                <h2 class="manage-title">Manage accounts for:</h2>
+                <div class="cards-container">
+                    <div class="card" onclick="switchView('list', 'student')">
+                        <img src="student-graduating.png" alt="Student">
+                        <h3>Student</h3>
+                    </div>
+                    <div class="card" onclick="switchView('list', 'teacher')">
+                        <img src="teacher.png" alt="Teacher">
+                        <h3>Teacher</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-list" class="view hidden white-container">
+                <div class="container-header">
+                    <h3 id="list-title-text">Student Records</h3>
+                    <button class="btn-back" onclick="switchView('selection')">Back</button>
+                </div>
+                
+                <div class="search-bar-row">
+                    <input type="text" placeholder="Search by Name 🔍">
+                    <input type="text" id="lrn-search-field" class="show-student" placeholder="Search by LRN 🔍">
+                    <select>
+                        <option>SORT BY..</option>
+                    </select>
+                </div>
+
+                <div class="list-container">
+                    <div class="list-item show-student" onclick="switchView('profile', 'student')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Doe, John Maverick</div>
+                            <div class="lrn">1234567890</div>
+                        </div>
+                        <div class="list-item-right item-text">newstudentemail@gmail.com</div>
+                    </div>
+                    <div class="list-item show-student" onclick="switchView('profile', 'student')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Santos, Maria Clara</div>
+                            <div class="lrn">1098765432</div>
+                        </div>
+                        <div class="list-item-right item-text">maria.santos@gmail.com</div>
+                    </div>
+                    <div class="list-item show-student" onclick="switchView('profile', 'student')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Dela Cruz, Juan Antonio</div>
+                            <div class="lrn">1122334455</div>
+                        </div>
+                        <div class="list-item-right item-text">juan.delacruz@gmail.com</div>
+                    </div>
+                    <div class="list-item show-student" onclick="switchView('profile', 'student')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Alvarez, Alyssa Jasmine</div>
+                            <div class="lrn">1543216789</div>
+                        </div>
+                        <div class="list-item-right item-text">alyssa.alvarez@gmail.com</div>
+                    </div>
+                    
+                    <div class="list-item show-teacher" onclick="switchView('profile', 'teacher')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Smith, Jane Alyson</div>
+                            <div class="dept">Information Technology Department</div>
+                        </div>
+                        <div class="list-item-right item-text">faculty.janesmith@gmail.com</div>
+                    </div>
+                    <div class="list-item show-teacher" onclick="switchView('profile', 'teacher')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Ramirez, Carlos Miguel</div>
+                            <div class="dept">Science and Mathematics Department</div>
+                        </div>
+                        <div class="list-item-right item-text">carlos.ramirez@gmail.com</div>
+                    </div>
+                    <div class="list-item show-teacher" onclick="switchView('profile', 'teacher')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Villanueva, Elena Soriano</div>
+                            <div class="dept">Languages and Humanities Department</div>
+                        </div>
+                        <div class="list-item-right item-text">elena.villanueva@gmail.com</div>
+                    </div>
+                    <div class="list-item show-teacher" onclick="switchView('profile', 'teacher')">
+                        <div class="list-item-left item-text">
+                            <div class="name">Torres, Ricardo Reyes</div>
+                            <div class="dept">Physical Education Department</div>
+                        </div>
+                        <div class="list-item-right item-text">ricardo.torres@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-profile" class="view hidden white-container">
+                <div class="container-header">
+                    <h3 id="profile-title-text">Student Profile</h3>
+                    <button class="btn-back" onclick="switchView('list')">Back</button>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <div class="icon-profile">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="profile-info-text">
+                            <div class="show-student">
+                                <h4 id="prof-stu-name">John M. Doe</h4>
+                                <div>1234567890</div>
+                                <div>Lmao</div>
+                                <div>newstudentemail@gmail.com</div>
+                            </div>
+                            <div class="show-teacher">
+                                <h4 id="prof-tch-name">Jane A. Smith</h4>
+                                <div>Information Technology Department</div>
+                                <div>faculty.janesmith@gmail.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h4>General Settings</h4>
+                        <div class="settings-btn-wrapper">
+                            <button id="btn-edit-details" onclick="openModal('edit')">Edit Details</button>
+                            <span id="cooldown-edit" class="cooldown-text hidden">Available in 24 hours</span>
+                        </div>
+                        <div class="settings-btn-wrapper">
+                            <button id="btn-reset-password" onclick="openModal('password')">Reset Password</button>
+                            <span id="cooldown-password" class="cooldown-text hidden">Available in 59:59</span>
+                        </div>
+                        <div class="settings-btn-wrapper">
+                            <button id="btn-deactivate" onclick="openModal('deactivate')">Deactivate Account</button>
+                            <span id="cooldown-deactivate" class="cooldown-text hidden">Available in 7 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-header">Full Information</div>
+                    
+                    <div class="info-grid show-student">
+                        <div class="info-block">
+                            <strong>Full Name</strong>
+                            <span>Doe, John Maverick</span>
+                        </div>
+                        <div class="info-block">
+                            <strong>Sex</strong>
+                            <span>Male</span>
+                        </div>
+                        <div class="info-block">
+                            <strong>Track</strong>
+                            <span>Academics</span>
+                        </div>
+                        <div class="info-block">
+                            <strong>Section</strong>
+                            <span>Lmao</span>
+                        </div>
+                        <div class="info-block" style="grid-column: span 4; margin-top: 10px;">
+                            <strong>Guardian's Contact No.</strong>
+                            <span>09123456789</span>
+                        </div>
+                    </div>
+
+                    <div class="info-grid show-teacher">
+                        <div class="info-block">
+                            <strong>Full Name</strong>
+                            <span>Smith, Jane Alyson</span>
+                        </div>
+                        <div class="info-block">
+                            <strong>Sex</strong>
+                            <span>Female</span>
+                        </div>
+                        <div class="info-block" style="grid-column: span 2;">
+                            <strong>Department</strong>
+                            <span>Information Technology Department</span>
+                        </div>
+                        <div class="info-block" style="grid-column: span 4; margin-top: 10px;">
+                            <strong>Email Address</strong>
+                            <span>faculty.janesmith@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-header">Audit Logs</div>
+                    <div class="audit-grid">
+                        <div>Action</div>
+                        <div>Date</div>
+                        <div>Time</div>
+                    </div>
+                    
+                    <div class="audit-data show-student">
+                        <div><strong>John M. Doe</strong> has changed his account password</div>
+                        <div>05/25/2026</div>
+                        <div>23:59</div>
+                    </div>
+                    
+                    <div class="audit-data show-teacher">
+                        <div><strong>Jane A. Smith</strong> has updated faculty information records</div>
+                        <div>05/25/2026</div>
+                        <div>14:22</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-container" class="modal-overlay hidden">
+        
+        <div id="modal-edit-student" class="modal-box modal-wide hidden">
+            <h3>Edit Information (Student)</h3>
+            <div class="modal-form-grid">
+                <div class="modal-form-block">
+                    <strong>Surname:</strong>
+                    <input type="text" value="Doe">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Given Name:</strong>
+                    <input type="text" value="John">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Middle Name:</strong>
+                    <input type="text" value="Maverick">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Sex:</strong>
+                    <select>
+                        <option value="Male" selected>Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="modal-form-block">
+                    <strong>LRN:</strong>
+                    <input type="text" value="1234567890">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Guardian's Contact No.:</strong>
+                    <input type="text" value="09123456789">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Track:</strong>
+                    <select id="modal-input-track" onchange="handleModalTrackChange(this.value)">
+                        <option value="Academics" selected>Academics</option>
+                        <option value="TVL">TVL</option>
+                    </select>
+                </div>
+                <div class="modal-form-block">
+                    <strong>Section:</strong>
+                    <select id="modal-input-section" class="section-disabled" disabled>
+                        <option value="Lmao" selected>Lmao</option>
+                        <option value="ICT-A">ICT-A</option>
+                        <option value="HE-B">HE-B</option>
+                    </select>
+                </div>
+                <div class="modal-form-block">
+                    <strong>Email:</strong>
+                    <input type="text" value="newstudentemail@gmail.com">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-modal-save" onclick="confirmAction('edit')">Save Changes</button>
+            </div>
+        </div>
+
+        <div id="modal-edit-teacher" class="modal-box modal-wide hidden">
+            <h3>Edit Information (Teacher)</h3>
+            <div class="modal-form-grid">
+                <div class="modal-form-block">
+                    <strong>Surname:</strong>
+                    <input type="text" value="Smith">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Given Name:</strong>
+                    <input type="text" value="Jane">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Middle Name:</strong>
+                    <input type="text" value="Alyson">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Sex:</strong>
+                    <select>
+                        <option value="Male">Male</option>
+                        <option value="Female" selected>Female</option>
+                    </select>
+                </div>
+                <div class="modal-form-block">
+                    <strong>Department:</strong>
+                    <input type="text" value="Information Technology Department">
+                </div>
+                <div class="modal-form-block">
+                    <strong>Email:</strong>
+                    <input type="text" value="faculty.janesmith@gmail.com">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-modal-save" onclick="confirmAction('edit')">Save Changes</button>
+            </div>
+        </div>
+
+        <div id="modal-password" class="modal-box hidden">
+            <h3>Reset Password</h3>
+            <p>Are you sure you want to reset the account password for this user? This will log out active sessions.</p>
+            <div class="modal-actions">
+                <button class="btn-modal-confirm" onclick="confirmAction('password')">Confirm</button>
+                <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+
+        <div id="modal-deactivate" class="modal-box hidden">
+            <h3>Deactivate Account</h3>
+            <p>Are you sure you want to deactivate this portal account profile link? Clearances will be suspended.</p>
+            <div class="modal-actions">
+                <button class="btn-modal-confirm" onclick="confirmAction('deactivate')">Confirm</button>
+                <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
